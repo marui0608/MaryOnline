@@ -11,10 +11,11 @@ https://docs.djangoproject.com/en/3.0/ref/settings/
 """
 
 import os
+import sys
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-
+sys.path.insert(0,os.path.join(BASE_DIR,'apps'))
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/3.0/howto/deployment/checklist/
@@ -40,11 +41,16 @@ INSTALLED_APPS = [
     'xadmin',
     'crispy_forms',
     'reversion',
-    'users.apps.UsersConfig',
-    'course',
-    'operation',
-    'organization',
+    'apps.users.apps.UsersConfig',
+    'apps.course.apps.CourseConfig',
+    'apps.operation.apps.OperationConfig',
+    'apps.organization.apps.OrganizationConfig',
 ]
+
+# 使用自己写的 UserProfile，而不是系统提供的
+AUTH_USER_MODEL = 'users.UserProfile'
+
+
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -135,3 +141,19 @@ STATIC_URL = '/static/'
 STATICFILES_DIRS = (
     os.path.join(BASE_DIR,'static'),
 )
+# 静态文件的收集路径
+STATIC_ROOT = os.path.join(BASE_DIR,'static/')
+
+# 配置邮箱
+EMAIL_HOST = 'smtp.qq.com'
+EMAIL_PORT = 25
+EMAIL_HOST_USER = '1696815801@qq.com'
+EMAIL_HOST_PASSWORD = 'vbtqypvpjmrsdjbd'    # 开启SMTP 的授权码
+EMAIL_USE_TLS = True
+EMAIL_FORM = '1696815801@qq.com'
+
+
+# 图片配置
+# 设置上传文件的路径
+MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR,'static/media')   #指定根目录
