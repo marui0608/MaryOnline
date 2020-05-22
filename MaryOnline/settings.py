@@ -41,10 +41,11 @@ INSTALLED_APPS = [
     'xadmin',
     'crispy_forms',
     'reversion',
-    'apps.users.apps.UsersConfig',
-    'apps.course.apps.CourseConfig',
-    'apps.operation.apps.OperationConfig',
-    'apps.organization.apps.OrganizationConfig',
+    'users.apps.UsersConfig',
+    'course.apps.CourseConfig',
+    'operation.apps.OperationConfig',
+    'organization.apps.OrganizationConfig',
+    'rest_framework'
 ]
 
 # 使用自己写的 UserProfile，而不是系统提供的
@@ -142,7 +143,7 @@ STATICFILES_DIRS = (
     os.path.join(BASE_DIR,'static'),
 )
 # 静态文件的收集路径
-STATIC_ROOT = os.path.join(BASE_DIR,'static/')
+# STATIC_ROOT = os.path.join(BASE_DIR,'static/')
 
 # 配置邮箱
 EMAIL_HOST = 'smtp.qq.com'

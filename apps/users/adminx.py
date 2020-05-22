@@ -1,6 +1,7 @@
 import xadmin
 from xadmin import views
 from .models import EmailVerifyRecord, Banner
+from xadmin.models import Log,Permission
 from apps.course.models import *
 from apps.operation.models import *
 from apps.organization.models import *
